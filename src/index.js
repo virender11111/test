@@ -2,16 +2,14 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
 import rootReducer from './reducers'
 
 import App from './App';
+import {store} from './store';
 import Foo from './Foo';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import registerServiceWorker from './registerServiceWorker';
 
-
-const store = createStore(rootReducer)
 
 render(
    

@@ -1,4 +1,10 @@
-import { createStore } from 'redux'
-import todoApp from '../reducers'
 
-const store = createStore(todoApp)
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from '../reducers/index';
+
+// Note: this API requires redux@>=3.1.0
+export const store = createStore(
+  rootReducer,
+  applyMiddleware(thunk)
+);

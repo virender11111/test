@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import actions from './actions'
+import actions from './actions/index'
 import {connect} from 'react-redux';
 
 const mapStateToProps = function(state){
@@ -37,10 +37,9 @@ handleChange(event) {
 		});
     }   
  handleSubmit(event,props) {
-    
+  console.log(props)
     event.preventDefault();
-     console.log('A name was submitted: ' + props.foo.password)
-     actions.foo.init(props)
+     props.dispatch(actions.foo.init(props));
   } 
   render() {
       console.log('propss');
