@@ -34,3 +34,30 @@ export function init(state) {
 		})
 	}
 }
+export function addAtribute(state){
+    
+    	return dispatch => {
+		return axios({
+			method: 'post',
+            data:state.foo,
+			url: 'https://www.omtut.com/api/users/addAttribute',
+			 headers: {
+                  'Content-Type': 'application/json'   }
+		})
+		.then(function ({data}) {
+			if(data.status){
+				dispatch({
+					type: 'UPDATE-DATA',
+					name:'attributevalue',
+                    value:true
+				})
+			}else{
+                dispatch({
+						type:'UPDATE-DATA',
+						name:'error',
+						value:true
+					})
+			}
+		})
+	}
+}

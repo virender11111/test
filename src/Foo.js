@@ -27,6 +27,7 @@ class Foo extends React.Component {
 constructor(props){
         super(props);
         this.handleChange = this.handleChange.bind(this);
+    this.handleSubmitValue  =this.handleSubmitValue.bind(this);
     }
     
 handleChange(event) {
@@ -39,6 +40,11 @@ handleChange(event) {
  handleSubmit(event,props) {
     event.preventDefault();
      props.dispatch(actions.foo.init(props));
+  } 
+    handleSubmitValue(event) {
+        console.log('fucntin allled');
+        console.log(this.props)
+     this.props.dispatch(actions.foo.addAtribute(this.props));
   } 
   render() {
       console.log('propss');
@@ -71,7 +77,19 @@ handleChange(event) {
                 </div>
                 <input type="submit" value="Submit" />
               </form>    
-            : <span>You have sucessfully loggedIn</span>
+            : <div><span>You have sucessfully loggedIn</span>
+                {this.props.foo.attributevalue ? <div><span>Attribute added successfully..</span></div> :
+                <form>
+                <div>
+                    <label>
+                      Attribute:
+                      <input type="text" name="attribute" value={this.props.foo.attribute} onChange={this.handleChange} />
+                    </label>
+                </div>
+                <a href="javascript:void(0)" onClick={this.handleSubmitValue} >Add Attribute</a>
+              </form>  
+                }
+            </div>
             }
             </div>
       </div>

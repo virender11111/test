@@ -4,7 +4,9 @@ import { combineReducers } from 'redux';
     username:'',
     password:'',
       error:false,
-      login_data:null
+      login_data:null,
+      attribute:'',
+      attributevalue:false
     }
 function foo(state = defaultFormdata, action){
   switch (action.type) {
