@@ -37,7 +37,6 @@ handleChange(event) {
 		});
     }   
  handleSubmit(event,props) {
-  console.log(props)
     event.preventDefault();
      props.dispatch(actions.foo.init(props));
   } 
@@ -52,17 +51,28 @@ handleChange(event) {
         </header>
             <div>
             <Link to='/'>Home</Link>
+        <div>
+            <span>{this.props.foo.error ?'provide the correct username/password':''}</span>
+        </div>
+            {
+            this.props.foo.login_data==null ?
               <form onSubmit={(event,props) =>{this.handleSubmit(event,this.props)}}>
+                <div>
                 <label>
                   username:
                   <input type="text" name="username" value={this.props.foo.username} onChange={this.handleChange} />
                 </label>
+                </div>
+                <div>
                 <label>
                   password:
                   <input type="password" name="password" value={this.props.foo.password} onChange={this.handleChange} />
                 </label>
+                </div>
                 <input type="submit" value="Submit" />
-              </form>
+              </form>    
+            : <span>You have sucessfully loggedIn</span>
+            }
             </div>
       </div>
     );

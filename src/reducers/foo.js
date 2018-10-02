@@ -2,7 +2,9 @@
 import { combineReducers } from 'redux';
   const defaultFormdata={
     username:'',
-    password:''
+    password:'',
+      error:false,
+      login_data:null
     }
 function foo(state = defaultFormdata, action){
   switch (action.type) {

@@ -1,7 +1,5 @@
 import axios from 'axios';
 export function init(state) {
-    console.log('Init called')
-    console.log(state)
 	return dispatch => {
 		return axios({
 			method: 'post',
@@ -11,14 +9,23 @@ export function init(state) {
                   'Content-Type': 'application/json'   }
 		})
 		.then(function ({data}) {
+            console.log(data);
 			if(data.status){
 				dispatch({
 					type: 'LOGIN-DATA',
 					data,
 				})
+                dispatch({
+						type:'UPDATE-DATA',
+						name:'error',
+						value:false
+					})
 			}else{
-
-					dispatch({
+                dispatch({
+					type: 'LOGIN-DATA',
+					data:data
+				})
+                dispatch({
 						type:'UPDATE-DATA',
 						name:'error',
 						value:true
